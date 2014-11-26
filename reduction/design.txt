@@ -1,0 +1,24 @@
+Parallelized Style Reduction
+============================
+
+   - Inputs: 
+      1. the number of threads desired
+      2. a list of records, each holding at least:
+         1) an actor's name
+         2) the movie in theaters they are performing in
+         3) their age, if found
+
+   - Outputs: a list of records, holding:
+      1. the name of a movie currently in theaters
+      2. the total count of actors processed for that movie
+      3. the combined age of all the actors processed
+
+   - Process:
+      1. Divide the list of actors into NT equally sized chunks
+      2. Spawn threads which repeat over their chunk:
+         a) research an actor online, finding their age
+         b) add their age into a list of 
+      3. When all threads are done, combine the lists, aggregating
+         necessary information
+
+   * NT = number of threads
