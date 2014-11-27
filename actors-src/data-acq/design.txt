@@ -1,0 +1,21 @@
+Data Acquisition
+================
+
+   - Inputs:
+      None (or JSON file, if HTML requests prove to be too difficult
+
+   - Outputs:
+     1. a list of records, each holding at least:
+         1) an actor's name
+         2) the movie in theaters they are performing in
+
+   - Process
+      1. Parses a JSON file containing the current in-theaters movies
+         a) for every movie in the file, find all actors and create a record
+            storing the association between movies and actors
+
+   - Notes:
+      1) Will need to make use of MLton's Basis libraries for HTTP requests, in particular:
+         a) URI.fromString (https://github.com/MLton/mlton/blob/master/lib/mlton/basic/url.sml)
+         b) HTTP
+         c) Socket/Net

@@ -6,7 +6,6 @@ Parallelized Style Reduction
       2. a list of records, each holding at least:
          1) an actor's name
          2) the movie in theaters they are performing in
-         3) their age, if found
 
    - Outputs: a list of records, holding:
       1. the name of a movie currently in theaters
@@ -22,3 +21,7 @@ Parallelized Style Reduction
          necessary information
 
    * NT = number of threads
+
+   - Potential problems
+      1. Double counting actors appearing in more than one movie
+      2. How to handle missing information

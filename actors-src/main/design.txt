@@ -1,0 +1,15 @@
+Main function
+=============
+
+Strings together the data-acqusition parts and the parallel reduction parts to
+calculate and display the final result (average age of actors in movies that are
+currenlty in theaters)
+
+   - Input:
+      NT - number of threads for the parallel reduction
+
+   - Output:
+      None (void)
+
+   * For simplicity sake, I will probably just print out the average age on the command line,
+     and as a stretch goal, I will calculate average age by movie
