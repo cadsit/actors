@@ -8,12 +8,11 @@
 
 signature REDUCTION =
 sig
-   val divide : {actor: string, movie: string, ...} list -> int ->
-                ({actor: string, movie: string, ...} list) chan
+   structure RR : RED_RECORDS
+   structure AvgAgeRedux : RES_RECORD 
+   val divide : RedRecords.InRecord.Set.set -> int -> RedRecords.InRecord.Set.set list
 
-   val avgAge : ({actor: string, movie: string, ...} list) chan ->
-                ({movie: string, totalAge: int, count: int, ...} list) chan
-
-   val reduce : (({movie: string, totalAge: int, count: int} list) chan) list ->
-                ({movie: string, totalAge: int, count: int} list) * int * int
+(*
+   val avgAge : RedRecords.InRecord.Set.set list -> AvgAgeRedux.t list
+*)
 end
