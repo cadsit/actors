@@ -10,9 +10,9 @@ signature REDUCTION =
 sig
    structure RS : RED_STRAT
 
-   val eval : RS.Input.t -> RS.Reducer.t RS.OutputMap.map
+   val eval : RS.Input.t -> RS.Reducer.t
 
    val divide : RS.Input.Set.set -> int -> RS.Input.Set.set list
 
-   val runReduce : RS.Input.Set.set -> int -> RS.Reducer.t RS.OutputMap.map
+   val runReduce : RS.Input.Set.set -> int -> RS.Reducer.Info.t RS.OutputMap.map
 end

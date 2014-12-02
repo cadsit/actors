@@ -10,6 +10,9 @@ structure AgeStrat : RED_STRAT =
 struct
    type id = string
 
+   (* =============================== *)
+
+   (* Defines the subparts of the reduction structure *)
    structure Input = AgeInput
 
    structure OrdKey =
@@ -19,7 +22,6 @@ struct
    end
 
    structure OutputMap = RedBlackMapFn (OrdKey) 
-
 
    structure Reducer = ReducerFn (structure MI = AgeInfo structure OM = OutputMap)
 end

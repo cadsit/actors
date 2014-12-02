@@ -1,4 +1,8 @@
-
+(* 
+ *    Files: reducer-fn.sml
+ *    Author: Connor
+ *
+ *)
 functor ReducerFn (structure MI : MOV_INFO
                    structure OM : ORD_MAP) : REDUCER = 
 struct

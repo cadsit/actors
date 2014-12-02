@@ -11,7 +11,10 @@
 structure AgeInfo : MOV_INFO =
 struct
    type t = {ages: int, count: int}
-    
+
+   (* ================================= *)
+
+   (* Helper functions *)    
    val combine = (fn (mi1, mi2) =>
                      let
                         val {ages = a1, count = c1} = mi1

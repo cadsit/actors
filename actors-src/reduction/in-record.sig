@@ -8,7 +8,7 @@
 
 signature IN_RECORD =
 sig
-   type t
+   datatype t = Actor of {actor: string, age: int, movie: string}
 
    val compare : t * t -> order
    val equals : t * t -> bool

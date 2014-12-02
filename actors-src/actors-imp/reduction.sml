@@ -8,16 +8,29 @@
 
 structure AvgReduction :> REDUCTION =
 struct
+   structure AI = AgeInput
+   structure RS = AgeStrat
 
-   structure AvgAgeRedux = RR.ReductionFn (RR.AvgAge)
-(* ============================================================== *)
-
-   fun divide (set : RR.InRecord.Set.set) 
-              (nt: int) 
-              : RR.InRecord.Set.set list =
+   (* ===================================== *)
+   
+   (* Functions required to run the reducer *)
+   fun eval (inp : RS.Input.t) : RS.Reducer.t =
       let
-         val items = RR.InRecord.Set.listItems set
-         val numItems = RR.InRecord.Set.numItems set
+         val AI.Actor {actor = n, age = a, movie = m} = inp
+         val out = {ages = a, count = 1}
+         val map = RS.OutputMap.insert (RS.OutputMap.empty, m, out)
+      in
+         map
+      end 
+
+   val eval = eval
+
+   fun divide (set : RS.Input.Set.set) 
+              (nt: int) 
+              : RS.Input.Set.set list =
+      let
+         val items = RS.Input.Set.listItems set
+         val numItems = RS.Input.Set.numItems set
          val toTake = numItems div nt
          fun take n l1 l2 = 
             if n <= 0
@@ -29,10 +42,10 @@ struct
             if n = 0
                then []
             else if n = 1
-               then [RR.InRecord.Set.addList (RR.InRecord.Set.empty, lst)]
+               then [RS.Input.Set.addList (RS.Input.Set.empty, lst)]
             else let
                    val (l1, l2) = take toTake lst []
-                   val set = RR.InRecord.Set.addList (RR.InRecord.Set.empty, l2)
+                   val set = RS.Input.Set.addList (RS.Input.Set.empty, l2)
                  in
                    set :: (split (n-1) l1)
                  end
@@ -41,4 +54,13 @@ struct
       end
 
    val divide = divide
+
+   fun runReduce inSet n = 
+      let
+         val mapped = RS.Input.Set.foldl (fn (x, l) => (eval x)::l) [] inSet
+      in
+         List.foldl (fn (x, r) => RS.Reducer.reduce (x, r)) RS.OutputMap.empty mapped
+      end
+
+   val runReduce = runReduce
 end

@@ -9,9 +9,10 @@
 
 structure AgeInput :> IN_RECORD =
 struct
-   type t = {actor: string,
-             age: int,
-             movie: string}
+   datatype t = Actor of {actor: string,
+                          age: int,
+                          movie: string}
+
 
    (* =============================================== *)
    (* Auxiliary functions for use in data collections *)
@@ -19,8 +20,8 @@ struct
    (* Compares only the names of the actors *)
    val compare = (fn (r1, r2) =>
       let
-         val {actor = a1, movie = _, age = _} = r1
-         val {actor = a2, movie = _, age = _} = r2
+         val Actor {actor = a1, movie = _, age = _} = r1
+         val Actor {actor = a2, movie = _, age = _} = r2
       in
          String.compare (a1, a2)
       end)
@@ -31,7 +32,7 @@ struct
    (* Returns the hash of the actor *)
    val hash = (fn r =>
       let
-         val {actor = a, movie = _, age = _} = r
+         val Actor {actor = a, movie = _, age = _} = r
       in
          HashString.hashString a
       end)
@@ -51,10 +52,10 @@ struct
       val sameKey = equals
    end
 
-   val make = fn (x, y, z) => {actor = x, age = y, movie = z}
+   val make = fn (x, y, z) => Actor {actor = x, age = y, movie = z}
    val toString = fn ai =>
                   let
-                     val {actor = a, age = c, movie = m} = ai
+                     val Actor {actor = a, age = c, movie = m} = ai
                   in
                      a ^ (Int.toString c) ^ m
                   end
