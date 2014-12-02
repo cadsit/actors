@@ -1,0 +1,6 @@
+local
+   data-acq/sources.mlb
+   reduction/sources.mlb
+   main/sources.mlb
+in
+end

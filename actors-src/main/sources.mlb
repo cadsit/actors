@@ -1,0 +1,17 @@
+local
+   $(SML_LIB)/basis/basis.mlb
+   $(SML_LIB)/smlnj-lib/Util/smlnj-lib.mlb
+   $(SML_LIB)/mlyacc-lib/mlyacc-lib.mlb
+   ../data-acq/sources.mlb
+   ../reduction/sources.mlb
+
+   ./age-info.sml
+   ./age-input.sml
+   ./age-strat.sml
+   ./tokens.sml
+   ./parser.grm.sig
+   ./parser.grm.sml
+   ./scanner.lex.sml
+in
+   
+end

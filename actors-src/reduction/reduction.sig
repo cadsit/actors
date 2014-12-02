@@ -8,11 +8,11 @@
 
 signature REDUCTION =
 sig
-   structure RR : RED_RECORDS
-   structure AvgAgeRedux : RES_RECORD 
-   val divide : RedRecords.InRecord.Set.set -> int -> RedRecords.InRecord.Set.set list
+   structure RS : RED_STRAT
 
-(*
-   val avgAge : RedRecords.InRecord.Set.set list -> AvgAgeRedux.t list
-*)
+   val eval : RS.Input.t -> RS.Reducer.t RS.OutputMap.map
+
+   val divide : RS.Input.Set.set -> int -> RS.Input.Set.set list
+
+   val runReduce : RS.Input.Set.set -> int -> RS.Reducer.t RS.OutputMap.map
 end

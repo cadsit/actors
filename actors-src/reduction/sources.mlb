@@ -1,0 +1,21 @@
+local
+   $(SML_LIB)/basis/basis.mlb
+   $(SML_LIB)/smlnj-lib/Util/smlnj-lib.mlb
+   $(SML_LIB)/cml/cml.mlb
+
+   ../data-acq/sources.mlb
+
+   ./mov-info.sig
+
+   ./reducer.sig
+   ./red-strat.sig
+
+   ./reduction.sig
+   ./reducer-fn.sml
+in
+   signature MOV_INFO
+   signature REDUCER
+   signature RED_STRAT
+   signature REDUCTION
+   functor ReducerFn
+end

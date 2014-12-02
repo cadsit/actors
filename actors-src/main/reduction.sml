@@ -6,10 +6,11 @@
  *    Provides an implementation for the reduction strategy
  *)
 
-structure Reduction :> REDUCTION =
+structure AvgReduction :> REDUCTION =
 struct
-   structure RR = RedRecords
+
    structure AvgAgeRedux = RR.ReductionFn (RR.AvgAge)
+(* ============================================================== *)
 
    fun divide (set : RR.InRecord.Set.set) 
               (nt: int) 

@@ -1,0 +1,62 @@
+%%
+
+%eop EOF
+%pos IntInf.int
+
+%nonterm
+   Data of AgeInput.t list 
+ | LinePlus of AgeInput.t list
+ | LineStar of AgeInput.t list
+ | Line of AgeInput.t
+ | WordsPlus of String.string
+ | WordsStar of String.string
+ | Word of String.string
+ | ActorName of String.string
+ | MovieName of String.string
+ | Age of int
+ 
+%term
+   KW_NAME 
+ | KW_MOVIE
+ | KW_AGE
+ | Name of String.string 
+ | Number of int
+ | EOF
+
+%name ActorParser
+%noshift EOF
+%nodefault
+%verbose
+%start Data
+
+%%
+
+Data 
+   : LinePlus (LinePlus)
+
+LinePlus 
+   : Line LineStar (Line :: LineStar)
+
+LineStar 
+   : Line LineStar (Line :: LineStar)
+   | ( [] )
+
+Line 
+   : ActorName MovieName Age (AgeInput.make (ActorName, Age, MovieName))
+
+WordsPlus
+   : Name WordsStar (Name ^ WordsStar)
+
+WordsStar
+   : Name WordsStar (Name ^ WordsStar)
+   | ( "" )
+
+ActorName
+   : KW_NAME WordsPlus (WordsPlus)
+
+MovieName
+   : KW_MOVIE WordsPlus (WordsPlus)
+
+Age
+   : KW_AGE Number (Number)
+
