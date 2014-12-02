@@ -23,7 +23,7 @@
  | Number of int
  | EOF
 
-%name ActorParser
+%name Actor
 %noshift EOF
 %nodefault
 %verbose

@@ -7,11 +7,10 @@
  *    Lexical specification and scanner for the input files
  *)
 structure Tokens = Tokens
-type pos = int
+type lexresult = Tokens.t 
+type pos = int 
 type svalue = Tokens.svalue
-type lexresult = (svalue, pos) Tokens.token
-
-val pos = ref 0
+type ('a, 'b) token = ('a, 'b) Tokens.token
 
 val eof = fn () => Tokens.EOF
 val error = fn (e) => let val _ = print (e ^ "\n") in Tokens.EOF end
@@ -23,12 +22,11 @@ alpha=[A-Za-z];
 digit=[0-9];
 ws=[\ \t];
 %%
-\n       => (pos := (!pos) + 1; lex ());
+\n       => (lex ());
 {ws}+    => (lex ());
-{alpha}+ => (if yytext="name" then Tokens.KW_NAME (!pos, !pos)
-             else if yytext = "movie" then Tokens.KW_MOVIE (!pos, !pos)
-             else if yytext = "age" then Tokens.KW_AGE (!pos, !pos)
-             else Tokens.Name (yytext, !pos, !pos));
-{digit}+ => (Tokens.Number (List.foldl (fn(a,r) => ord(a) + 10*r) 0 (List.rev (explode yytext)),
-                            !pos, !pos));
+{alpha}+ => (if yytext="name" then Tokens.KW_NAME
+             else if yytext = "movie" then Tokens.KW_MOVIE 
+             else if yytext = "age" then Tokens.KW_AGE 
+             else Tokens.Name (yytext));
+{digit}+ => (Tokens.Number (List.foldl (fn(a,r) => ord(a) + 10*r) 0 (List.rev (explode yytext))));
 .        => (error "Bad input file format");

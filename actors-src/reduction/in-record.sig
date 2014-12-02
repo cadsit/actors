@@ -16,6 +16,8 @@ sig
 
    val make : (string * int *string) -> t
 
+   val toString : t -> string
+
    structure Set : ORD_SET where type Key.ord_key = t
    structure Map : ORD_MAP where type Key.ord_key = t
    structure Tbl : MONO_HASH_TABLE where type Key.hash_key = t

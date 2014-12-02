@@ -1,0 +1,14 @@
+local
+   $(SML_LIB)/basis/basis.mlb
+   $(SML_LIB)/smlnj-lib/Util/smlnj-lib.mlb
+
+   ../reduction/sources.mlb
+
+   ./age-info.sml
+   ./age-input.sml
+   ./age-strat.sml
+in
+   structure AgeInfo
+   structure AgeInput
+   structure AgeStrat
+end

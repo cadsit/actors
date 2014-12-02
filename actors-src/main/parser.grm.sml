@@ -1,6 +1,6 @@
-functor ActorParserLrValsFun(structure Token : TOKEN)
+functor ActorLrValsFun(structure Token : TOKEN)
  : sig structure ParserData : PARSER_DATA
-       structure Tokens : ActorParser_TOKENS
+       structure Tokens : Actor_TOKENS
    end
  = 
 struct
@@ -240,7 +240,7 @@ val extract = fn a => (fn MlyValue.Data x => x
 	in raise ParseInternal end) a ()
 end
 end
-structure Tokens : ActorParser_TOKENS =
+structure Tokens : Actor_TOKENS =
 struct
 type svalue = ParserData.svalue
 type ('a,'b) token = ('a,'b) Token.token
@@ -252,3 +252,4 @@ fun Number (i,p1,p2) = Token.TOKEN (ParserData.LrTable.T 4,(ParserData.MlyValue.
 fun EOF (p1,p2) = Token.TOKEN (ParserData.LrTable.T 5,(ParserData.MlyValue.VOID,p1,p2))
 end
 end
+

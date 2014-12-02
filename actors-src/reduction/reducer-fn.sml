@@ -12,4 +12,6 @@ struct
              | NONE    => OM.insert (m, k, r))
       res1
       res2)
+   val toString = fn r =>
+                     OM.foldl (fn (v, s) => (MI.toString v) ^ "\n" ^ s) "" r
 end

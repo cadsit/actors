@@ -11,4 +11,5 @@ signature MOV_INFO =
 sig
    type t
    val combine : (t * t) -> t
+   val toString : t -> string
 end

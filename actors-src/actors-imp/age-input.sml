@@ -52,6 +52,12 @@ struct
    end
 
    val make = fn (x, y, z) => {actor = x, age = y, movie = z}
+   val toString = fn ai =>
+                  let
+                     val {actor = a, age = c, movie = m} = ai
+                  in
+                     a ^ (Int.toString c) ^ m
+                  end
    structure Set = RedBlackSetFn (OrdKey)
    structure Map = RedBlackMapFn (OrdKey)
    structure Tbl = HashTableFn (HashKey)

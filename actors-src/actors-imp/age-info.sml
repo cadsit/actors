@@ -19,4 +19,10 @@ struct
                      in
                         {ages = a1 + a2, count = c1 + c2}
                      end) 
+   val toString = fn mi =>
+                     let
+                        val {ages = a, count = c} = mi
+                     in
+                        (Int.toString a) ^ (Int.toString c)
+                     end
 end

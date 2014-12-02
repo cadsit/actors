@@ -11,4 +11,5 @@ sig
    structure Info : MOV_INFO
    type t
    val reduce : (t * t) -> t 
+   val toString : t -> string
 end

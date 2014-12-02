@@ -11,17 +11,16 @@ structure ActorLex=
  *    Lexical specification and scanner for the input files
  *)
 structure Tokens = Tokens
-type pos = int
+type lexresult = Tokens.t 
+type pos = int 
 type svalue = Tokens.svalue
-type lexresult = (svalue, pos) Tokens.token
-
-val pos = ref 0
+type ('a, 'b) token = ('a, 'b) Tokens.token
 
 val eof = fn () => Tokens.EOF
 val error = fn (e) => let val _ = print (e ^ "\n") in Tokens.EOF end
 
 
-(*#line 24.1 "scanner.lex.sml"*)
+(*#line 23.1 "scanner.lex.sml"*)
 end (* end of user routines *)
 exception LexError (* raised if illegal leaf action tried *)
 structure Internal =
@@ -148,19 +147,18 @@ let fun continue() = lex() in
 
 			(* Application actions *)
 
-  1 => ((*#line 26.14 "scanner.lex"*)pos := (!pos) + 1; lex ()(*#line 151.1 "scanner.lex.sml"*)
+  1 => ((*#line 25.14 "scanner.lex"*)lex ()(*#line 150.1 "scanner.lex.sml"*)
 )
-| 10 => let val yytext=yymktext() in (*#line 32.14 "scanner.lex"*)Tokens.Number (List.foldl (fn(a,r) => ord(a) + 10*r) 0 (List.rev (explode yytext)),
-                            !pos, !pos)(*#line 154.1 "scanner.lex.sml"*)
+| 10 => let val yytext=yymktext() in (*#line 31.14 "scanner.lex"*)Tokens.Number (List.foldl (fn(a,r) => ord(a) + 10*r) 0 (List.rev (explode yytext)))(*#line 152.1 "scanner.lex.sml"*)
  end
-| 12 => ((*#line 34.14 "scanner.lex"*)error "Bad input file format"(*#line 156.1 "scanner.lex.sml"*)
+| 12 => ((*#line 32.14 "scanner.lex"*)error "Bad input file format"(*#line 154.1 "scanner.lex.sml"*)
 )
-| 4 => ((*#line 27.14 "scanner.lex"*)lex ()(*#line 158.1 "scanner.lex.sml"*)
+| 4 => ((*#line 26.14 "scanner.lex"*)lex ()(*#line 156.1 "scanner.lex.sml"*)
 )
-| 7 => let val yytext=yymktext() in (*#line 28.14 "scanner.lex"*)if yytext="name" then Tokens.KW_NAME (!pos, !pos)
-             else if yytext = "movie" then Tokens.KW_MOVIE (!pos, !pos)
-             else if yytext = "age" then Tokens.KW_AGE (!pos, !pos)
-             else Tokens.Name (yytext, !pos, !pos)(*#line 163.1 "scanner.lex.sml"*)
+| 7 => let val yytext=yymktext() in (*#line 27.14 "scanner.lex"*)if yytext="name" then Tokens.KW_NAME
+             else if yytext = "movie" then Tokens.KW_MOVIE 
+             else if yytext = "age" then Tokens.KW_AGE 
+             else Tokens.Name (yytext)(*#line 161.1 "scanner.lex.sml"*)
  end
 | _ => raise Internal.LexerError
 

@@ -1,4 +1,4 @@
-signature ActorParser_TOKENS =
+signature Actor_TOKENS =
 sig
 type ('a,'b) token
 type svalue
@@ -9,9 +9,9 @@ val KW_AGE:  'a * 'a -> (svalue,'a) token
 val KW_MOVIE:  'a * 'a -> (svalue,'a) token
 val KW_NAME:  'a * 'a -> (svalue,'a) token
 end
-signature ActorParser_LRVALS=
+signature Actor_LRVALS=
 sig
-structure Tokens : ActorParser_TOKENS
+structure Tokens : Actor_TOKENS
 structure ParserData:PARSER_DATA
 sharing type ParserData.Token.token = Tokens.token
 sharing type ParserData.svalue = Tokens.svalue
