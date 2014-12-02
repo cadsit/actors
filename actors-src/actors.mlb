@@ -1,6 +1,6 @@
 local
-   data-acq/sources.mlb
    reduction/sources.mlb
+   actors-imp/sources.mlb
    main/sources.mlb
 in
 end
