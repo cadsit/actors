@@ -92,8 +92,14 @@ public class RottenTomatoesJSON {
       FileWriter fw = null;
       try {
          fw = new FileWriter (dest);
-         for (int n = 0; n < names.size (); ++n)
-            fw.write ("name " + names.get (n) + " movie " + movies.get (n) + " age " + ages.get (n) + "\n");
+         for (int n = 0; n < names.size (); ++n) {
+            fw.write ("name\n");
+            fw.write (names.get (n) + "\n");
+            fw.write ("movie\n");
+            fw.write (movies.get (n) + "\n");
+            fw.write ("age\n");
+            fw.write (ages.get (n) + "\n");
+         }
       } catch (IOException ioe) {
          ioe.printStackTrace ();
          System.err.println (ioe.getMessage ());

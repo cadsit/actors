@@ -3,14 +3,12 @@ local
    $(SML_LIB)/smlnj-lib/Util/smlnj-lib.mlb
    $(SML_LIB)/mlyacc-lib/mlyacc-lib.mlb
 
+   ../reduction/sources.mlb
    ../actors-imp/sources.mlb
 
-
-   ./tokens.sml
-   ./scanner.lex.sml
-
-   ./parser.grm.sig
-   ./parser.grm.sml
+   ./token.sml
+   ./actor-reader.sig
+   ./actor-reader.sml
 
    ./main.sml
    ./call-main.sml

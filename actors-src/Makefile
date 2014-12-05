@@ -9,15 +9,9 @@ PARSER_GEN     := main/parser.grm.sml
 
 
 .PHONY: all
-all: $(ACTORS_EXEC) $(SCANNER_GEN) $(PARSER_GEN)
+all: $(ACTORS_EXEC) 
 	$(MAKE) -C data-acq/
 	$(MLTON) $(MLTON_FLAGS) -output $(ACTORS_EXEC) $(ACTORS_MLB)
-
-$SCANNER_GEN): $(SCANNER_FILES)
-	mllex $(SCANNER_FILES)
-
-$(PARSER_GEN): $(PARSER_FILES)
-	mlyacc $(PARSER_FILES)
 
 .PHONY: clean
 clean:

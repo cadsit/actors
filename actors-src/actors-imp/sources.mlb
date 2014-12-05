@@ -3,13 +3,11 @@ local
    $(SML_LIB)/smlnj-lib/Util/smlnj-lib.mlb
 
    ../reduction/sources.mlb
-
-   ./age-info.sml
-   ./age-input.sml
-   ./age-strat.sml
-   ./reduction.sml
+   ./actor.sml
+   ./string-map.sml
+   ./avg-age-by-movie.sml
 in
-   structure AgeInfo
-   structure AgeInput
-   structure AgeStrat
+   structure StringMap
+   structure Actor
+   structure AvgAgeByMovie
 end
