@@ -5,7 +5,7 @@ Obtains the average age of all actors appearing in movies currently in theaters.
 
 
 Running the program:
-   To build, run the 'build.sh' script at the top level.
+   To build, simply run `make` in the top level folder 
    The executable with be stored in the bin folder (./bin/actors)
    
    To run from the top level, simply ./bin/actors with one command line argument, file,
@@ -52,8 +52,6 @@ Problems arose during development:
 
 TO-DOs:
 
-   Provide a utility to send HTML requests and parse information into a data file
-
    Make RED_INPUT truly generic (needed a make function to satisfy type-checking in the parser)
 
-   Add in a parralel multithreading to the infrastructure to help manage large loads
+   Add in a parallel multithreading to the infrastructure to help manage large loads
