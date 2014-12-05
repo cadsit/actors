@@ -1,21 +1,14 @@
 local
    $(SML_LIB)/basis/basis.mlb
    $(SML_LIB)/smlnj-lib/Util/smlnj-lib.mlb
-   $(SML_LIB)/cml/cml.mlb
-
-   ./in-record.sig
-   ./mov-info.sig
-
-   ./reducer.sig
-   ./red-strat.sig
-
+   
+   ./input.sig
+   ./output.sig
    ./reduction.sig
-   ./reducer-fn.sml
+   ./seq-redux-fn.sml
 in
-   signature IN_RECORD
-   signature MOV_INFO
-   signature REDUCER
-   signature RED_STRAT
+   signature INPUT
+   signature OUTPUT 
    signature REDUCTION
-   functor ReducerFn
+   functor SeqReduxFn
 end
